@@ -41,10 +41,9 @@ class Auth_OpenID_MemcachedStore extends Auth_OpenID_OpenIDStore {
      *
      * @param resource connection Memcache connection resourse
      */
-    function Auth_OpenID_MemcachedStore($connection, $compress = false)
+    function Auth_OpenID_MemcachedStore($connection)
     {
         $this->connection = $connection;
-        $this->compress = $compress ? MEMCACHE_COMPRESSED : 0;
     }
 
     /**
@@ -73,14 +72,12 @@ class Auth_OpenID_MemcachedStore extends Auth_OpenID_OpenIDStore {
         // save associations' keys list 
         $this->connection->set(
             $serverKey,
-            $serverAssociations,
-            $this->compress
+            $serverAssociations
         );
         // save association itself
         $this->connection->set(
             $associationKey,
             $association, 
-            $this->compress, 
             $association->issued + $association->lifetime);
     }
 
@@ -150,8 +147,7 @@ class Auth_OpenID_MemcachedStore extends Auth_OpenID_OpenIDStore {
         // save updated list
         $this->connection->set(
             $serverKey,
-            $serverAssociations,
-            $this->compress
+            $serverAssociations
         );
 
         // delete association 
@@ -176,7 +172,6 @@ class Auth_OpenID_MemcachedStore extends Auth_OpenID_OpenIDStore {
         return $this->connection->add(
             'openid_nonce_' . sha1($server_url) . '_' . sha1($salt), 
             1, // any value here 
-            $this->compress, 
             $Auth_OpenID_SKEW);
     }
     
