@@ -1,0 +1,11 @@
+{
+    "name": "practo/php-openid",
+    "type": "library",
+    "description": "Clone of PHP OpenID library by JanRain, Inc.",
+    "keywords": ["openid", "practo"],
+    "homepage": "https://github.com/practo/php-openid",
+    "license": "Apache-2.0",
+    "autoload": {
+        "psr-0": { "Auth": "" }
+    }
+}
