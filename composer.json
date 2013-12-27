@@ -6,6 +6,7 @@
     "homepage": "https://github.com/practo/php-openid",
     "license": "Apache-2.0",
     "autoload": {
-        "psr-0": { "Auth": "" }
-    }
+        "classmap": ["Auth"]
+    },
+    "include-path": ["."]
 }
